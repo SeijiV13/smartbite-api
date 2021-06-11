@@ -8,7 +8,8 @@ export class SessionHandler {
     public static checkAllSessions = () => {
         return SessionHandler.sessions;
     }
-
+    
+    //checks if the user has existing session and it will retrive the remaining credit, account balance and id
     public static checkExistingSession = (id: string ) => {
         const session = SessionHandler.sessions.find((data) => data.id === id)
         if(session) {
@@ -16,7 +17,8 @@ export class SessionHandler {
         }
         return null;
     }
-
+   
+    // this will create new session id using guid
     public static createSession = () => {
         const session = new Session();
         session.id = guid.raw();
@@ -26,7 +28,8 @@ export class SessionHandler {
 
         return session;
     }
-
+     
+    // compute credits base on given points
     public static computeCreditstoSession = (id: string, points: number) => {
         const session = SessionHandler.sessions.find((data) => data.id === id);
         if(session) {
